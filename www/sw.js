@@ -23,7 +23,7 @@ importScripts('/cache-polyfill.js');
 
 self.addEventListener('install', function(e) {
   e.waitUntil(
-    caches.open('airhorner').then(function(cache) {
+    caches.open('ppmcache').then(function(cache) {
       return cache.addAll([
         '/',
         '/lib/ionic/css/ionic.css',
@@ -61,11 +61,11 @@ self.addEventListener('install', function(e) {
   );
 });
 
-/*
+
 self.addEventListener('activate', function(event) {
   event.waitUntil(self.clients.claim());
 });
-*/
+
 self.addEventListener('fetch', function(event) {
   console.log(event.request.url);
   
