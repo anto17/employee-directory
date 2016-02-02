@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "name": "PPM",
+  "launch_path": "/index.html",
+  "description": "PPM",
+  "icons": {
+    "128": "/img/ionic.png"
+  },
+  "developer": {
+    "name": "Jelastin Johnsraj",
+    "url": "http://jelastin.johnsraj.me"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "PPM",
+      "description": "PPM"
+    }
+  }
+}
