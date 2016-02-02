@@ -1,6 +1,5 @@
 /*
  *
- *  Air Horner
  *  Copyright 2015 Google Inc. All rights reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +25,7 @@ self.addEventListener('install', function(e) {
     caches.open('ppmcache').then(function(cache) {
       return cache.addAll([
         '/',
-        '/index.html',
+        //'/index.html',
         '/lib/ionic/css/ionic.css',
         '/css/style.css',
         '/lib/ionic/js/ionic.bundle.js',
@@ -57,8 +56,8 @@ self.addEventListener('install', function(e) {
          '/employees',
          '/employees/0',
          '/employees/1',
-        'employees/0/reports',
-        'employees/1/reports'
+         'employees/0/reports',
+         'employees/1/reports'
       ]).then(function() {
         return self.skipWaiting();
       });
@@ -66,10 +65,11 @@ self.addEventListener('install', function(e) {
   );
 });
 
-
+/*
 self.addEventListener('activate', function(event) {
   event.waitUntil(self.clients.claim());
 });
+*/
 
 self.addEventListener('fetch', function(event) {
   console.log(event.request.url);
