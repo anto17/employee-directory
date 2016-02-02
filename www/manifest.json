@@ -1,0 +1,27 @@
+{
+  "name": "PPM",
+  "short_name": "PPM",
+  "icons": [{
+        "src": "img/ionic.png",
+        "type": "image/png",
+        "sizes": "128x128"
+      }, {
+        "src": "img/ionic.png",
+        "type": "image/png",
+        "sizes": "152x152"
+      }, {
+        "src": "img/ionic.png",
+        "type": "image/png",
+        "sizes": "144x144"
+      },
+      {
+        "src": "img/ionic.png",
+        "type": "image/png",
+        "sizes": "256x256"
+      }],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2196F3",
+  "theme_color": "#2196F3"
+}
