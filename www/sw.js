@@ -26,6 +26,7 @@ self.addEventListener('install', function(e) {
     caches.open('ppmcache').then(function(cache) {
       return cache.addAll([
         '/',
+        '/index.html',
         '/lib/ionic/css/ionic.css',
         '/css/style.css',
         '/lib/ionic/js/ionic.bundle.js',
@@ -50,10 +51,14 @@ self.addEventListener('install', function(e) {
         '/pics/Paul_Jones.jpg',
         '/pics/Paula_Gates.jpg',
         '/templates/employee-detail.html',
+        'templates/employee-list',
+        'templates/employee-reports.html',
 
          '/employees',
          '/employees/0',
-         '/employees/1'
+         '/employees/1',
+        'employees/0/reports',
+        'employees/1/reports'
       ]).then(function() {
         return self.skipWaiting();
       });

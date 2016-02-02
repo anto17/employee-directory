@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "name": "PPM",
-  "launch_path": "/index.html",
+  "launch_path": "/",
   "description": "PPM",
   "icons": {
     "128": "/img/ionic.png"
