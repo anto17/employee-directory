@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
-  "name": "PPM",
+  "name": "Employee Directory",
   "launch_path": "/",
-  "description": "PPM",
+  "description": "Employee Directory",
   "icons": {
     "128": "/img/ionic.png"
   },
@@ -18,8 +18,8 @@
   },
   "locales": {
     "en": {
-      "name": "PPM",
-      "description": "PPM"
+      "name": "Employee Directory",
+      "description": "Employee Directory"
     }
   }
 }

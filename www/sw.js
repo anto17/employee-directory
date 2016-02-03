@@ -16,8 +16,6 @@
  *
  */
  
-// Version 0.52
-
 importScripts('/cache-polyfill.js');
 
 self.addEventListener('install', function(e) {
@@ -25,7 +23,6 @@ self.addEventListener('install', function(e) {
     caches.open('ppmcache').then(function(cache) {
       return cache.addAll([
         '/',
-        //'/index.html',
         '/lib/ionic/css/ionic.css',
         '/css/style.css',
         '/lib/ionic/js/ionic.bundle.js',
@@ -34,7 +31,6 @@ self.addEventListener('install', function(e) {
         '/js/app.js',
         '/js/controllers.js',
         '/js/services.js',
-        '/templates/employee-list.html',
         '/lib/ionic/fonts/ionicons.ttf?v=1.5.2',
 
         '/pics/Lisa_Wong.jpg',
@@ -49,15 +45,17 @@ self.addEventListener('install', function(e) {
         '/pics/Ray_Moore.jpg',
         '/pics/Paul_Jones.jpg',
         '/pics/Paula_Gates.jpg',
+
+        '/index.html',
         '/templates/employee-detail.html',
-        'templates/employee-list',
+        'templates/employee-list.html',
         'templates/employee-reports.html',
 
-         '/employees',
-         '/employees/0',
-         '/employees/1',
-         'employees/0/reports',
-         'employees/1/reports'
+        '/employees',
+        '/employees/0',
+        '/employees/1',
+        'employees/0/reports',
+        'employees/1/reports'
       ]).then(function() {
         return self.skipWaiting();
       });
@@ -65,11 +63,9 @@ self.addEventListener('install', function(e) {
   );
 });
 
-/*
 self.addEventListener('activate', function(event) {
   event.waitUntil(self.clients.claim());
 });
-*/
 
 self.addEventListener('fetch', function(event) {
   console.log(event.request.url);

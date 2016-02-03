@@ -1,6 +1,6 @@
 {
-  "name": "PPM",
-  "short_name": "PPM",
+  "name": "Employee Directory",
+  "short_name": "Employee Directory",
   "icons": [{
         "src": "img/ionic.png",
         "type": "image/png",
