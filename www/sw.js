@@ -18,7 +18,10 @@
  
 importScripts('/cache-polyfill.js');
 
+console.log('Started', self);
+
 self.addEventListener('install', function(e) {
+  console.log('Installed', e);
   e.waitUntil(
     caches.open('empdircache').then(function(cache) {
       return cache.addAll([
@@ -72,9 +75,11 @@ self.addEventListener('install', function(e) {
       });
     })
   );
+  //self.skipWaiting();
 });
 
 self.addEventListener('activate', function(event) {
+  console.log('activate', event);
   event.waitUntil(self.clients.claim());
 });
 
@@ -86,4 +91,16 @@ self.addEventListener('fetch', function(event) {
       return response || fetch(event.request);
     })
   );
+});
+
+self.addEventListener('push', function(event) {
+  console.log('Push message', event);
+
+  var title = 'Push message';
+
+  event.waitUntil(
+      self.registration.showNotification(title, {
+        'body': 'The Message',
+        'icon': '/img/ipnic.png'
+      }));
 });
