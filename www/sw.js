@@ -54,8 +54,19 @@ self.addEventListener('install', function(e) {
         '/employees',
         '/employees/0',
         '/employees/1',
+        '/employees/2',
+        '/employees/3',
+        '/employees/4',
+        '/employees/5',
+        '/employees/6',
+        '/employees/7',
+
         'employees/0/reports',
-        'employees/1/reports'
+        'employees/1/reports',
+        'employees/2/reports',
+        'employees/3/reports',
+        'employees/4/reports',
+        'employees/5/reports'
       ]).then(function() {
         return self.skipWaiting();
       });
