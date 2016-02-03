@@ -20,7 +20,7 @@ importScripts('/cache-polyfill.js');
 
 self.addEventListener('install', function(e) {
   e.waitUntil(
-    caches.open('ppmcache').then(function(cache) {
+    caches.open('empdircache').then(function(cache) {
       return cache.addAll([
         '/',
         '/lib/ionic/css/ionic.css',

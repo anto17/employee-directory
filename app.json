@@ -1,7 +1,7 @@
 {
 "name": "Employee Directory",
 "description": "Employee Directory with Node.js",
-"repository": "https://github.com/anto17/ppm.git",
+"repository": "https://github.com/anto17/employee-directory.git",
 "logo": "https://node-js-sample.herokuapp.com/node.svg",
 "keywords": ["node", "express", "ionic", "directory"]
 }

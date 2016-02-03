@@ -1,5 +1,5 @@
 {
-  "name": "Employee Directory",
+  "name": "employee-directory",
   "description": "Employee Directory app in node.js",
   "version": "0.0.1",
   "private": true,
