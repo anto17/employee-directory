@@ -1,6 +1,13 @@
 var express = require('express'),
     employees = require('./routes/employees'),
+    gcm = require('./routes/gcm'),
+    pushnotify= require('./routes/pushnotify'),
+    bodyParser = require("body-parser"),
     app = express();
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('www'));
 
@@ -14,6 +21,11 @@ app.all('*', function(req, res, next) {
 app.get('/employees', employees.findAll);
 app.get('/employees/:id', employees.findById);
 app.get('/employees/:id/reports', employees.findReports);
+
+//Rest API for GCM
+app.post('/register', gcm.register);
+app.get('/sendmsg', pushnotify.sendmsg);
+
 
 app.set('port', process.env.PORT || 5000);
 

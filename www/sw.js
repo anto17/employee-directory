@@ -100,7 +100,7 @@ self.addEventListener('push', function(event) {
 
   event.waitUntil(
       self.registration.showNotification(title, {
-        'body': 'The Message',
-        'icon': '/img/ipnic.png'
+        'body': 'A message from Anto',
+        'icon': '/img/ionic.png'
       }));
 });
