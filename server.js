@@ -1,5 +1,6 @@
 var express = require('express'),
     employees = require('./routes/employees'),
+    products = require('./routes/products'),
     gcm = require('./routes/gcm'),
     pushnotify= require('./routes/pushnotify'),
     bodyParser = require("body-parser"),
@@ -26,6 +27,11 @@ app.get('/employees/:id/reports', employees.findReports);
 app.post('/register', gcm.register);
 app.get('/sendmsg', pushnotify.sendmsg);
 
+
+//BBY
+app.get('/dyn', gcm.dyn);
+app.get('/products', products.findAll);
+app.get('/products/:id', products.findById);
 
 app.set('port', process.env.PORT || 5000);
 

@@ -1,6 +1,8 @@
 angular.module('directory', ['ionic', 'directory.controllers', 'directory.services'])
 
-    .run(function ($ionicPlatform) {
+    .run(function ($rootScope, $state, $stateParams,$ionicPlatform) {
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -17,7 +19,6 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
     .config(function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
-
             .state('search', {
                 url: '/search',
                 templateUrl: 'templates/employee-list.html',
@@ -34,6 +35,17 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
                 url: '/employees/:employeeId/reports',
                 templateUrl: 'templates/employee-reports.html',
                 controller: 'EmployeeReportsCtrl'
+            })
+
+            .state('list', {
+                url: '/list',
+                templateUrl: 'templates/product-list.html',
+                controller: 'ProductListCtrl'
+            })
+            .state('product', {
+                url: '/products/:productId',
+                templateUrl: 'templates/product-detail.html',
+                controller: 'ProductDetailCtrl'
             });
 
         $urlRouterProvider.otherwise('/search');

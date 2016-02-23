@@ -1,0 +1,19 @@
+<ion-view title="Product">
+
+    <ion-content has-header="true" padding="true">
+
+        <div class="list card">
+            <div class="item item-avatar">
+                <img src="{{product.imageurl}}" style="border-radius: inherit;"/>
+                <h2>{{product.productname}}</h2>
+                <p>{{product.description}}</p>
+            </div>
+            <a class="item item-icon-left" ><i class="icon ion-ios7-telephone"></i>Store Pickup<p>{{product.pickup}}</p></a>
+            <a class="item item-icon-left" ><i class="icon ion-ios7-telephone"></i>Shipping<p>{{product.ship}}</p></a>
+            <a class="item item-icon-left" ><i class="icon ion-chatbox-working"></i>Bonus<p>{{product.bonus}}</p></a>
+            <a class="item item-icon-left" ><i class="icon ion-person-stalker"></i>Custmer Ratings<p>{{product.customerrating}}/5</p></a>
+        </div>
+
+    </ion-content>
+
+</ion-view>

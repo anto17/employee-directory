@@ -14,7 +14,23 @@ exports.register = function(req, res) {
         return res.send({"status": "success", "message": "successfully registered"});
     }
 };
-
+exports.dyn = function(req, res) {
+    var any = req.query.bby; // ||  req.query.bby1 || req.query.bby2;
+    if(any){
+        var param = req.query.bby;
+        if(param){
+            if(param == 'Y'){
+                global_.dyn.bby = 'Y';
+                return res.send("Successfully activated");
+            }else{
+                global_.dyn.bby = 'N';
+                return res.send("Successfully de-activated");
+            }
+        }
+    }else{
+        return res.send(global_.dyn);
+    }
+};
 var isContains = function(ary, id){
     if (ary.indexOf(id) > -1) {
         return true;

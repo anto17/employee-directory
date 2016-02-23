@@ -6,7 +6,8 @@
   "dependencies": {
     "body-parser": "~1.12.4",
     "request":">2.5",
-    "express": "~4.4.3"
+    "express": "~4.4.3",
+    "node-rest-client":"~1.8.0"
   },
   "subdomain": "anto",
   "scripts": {

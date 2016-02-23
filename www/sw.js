@@ -128,3 +128,8 @@ self.addEventListener('notificationclick', function(event) {
           })
   );
 });
+
+self.registration.showNotification('Buzz!', {
+  body: 'Bzzz bzzzz',
+  vibrate: [300, 100, 400] // Vibrate 300ms, pause 100ms, then vibrate 400ms
+});
