@@ -30,3 +30,61 @@
     height: 90px;
 }
 
+.button{
+    border-radius: 10px;
+}
+.item-input-wrapper {
+    border-radius: 16px;
+    padding-right: 0px;
+    padding-left: 10px;
+}
+
+.clear-search{
+    border-radius: 20px;
+}
+
+div.dealOfDay, div.noResultFound{
+    margin: 17px 0px;
+}
+
+div.dealOfDay span, div.noResultFound span{
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 28%;
+}
+div.noResultFound span{
+    /*color: red;*/
+    font-size: 12px;
+}
+.bby-logo{
+    width: 65px;
+    height: 41px;
+    display: inline-block;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    background: url('../img/header_sprite.png') no-repeat -6px -9px;
+    background-size: 125px,255px;
+
+}
+
+.bby-logo-lite{
+    font-family: cursive;
+    vertical-align: 9px;
+    font-size: 26px;
+    margin-left: 3px;
+}
+
+.bby-footer{
+    height: 25px;
+}
+.bby-footer div{
+    font-style: oblique;
+    font-size: 13px !important;
+    line-height: 27px !important;
+}
+
+.bby-back-button-width{
+    min-width: 50px;
+}
+

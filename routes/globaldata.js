@@ -3,5 +3,6 @@ exports.reg_id = {
     reg_ids:[]
 };
 exports.dyn={
-    bby:'N'
+    bby:'N',
+    dealOfDay:'mobile'
 };

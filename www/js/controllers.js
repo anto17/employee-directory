@@ -27,37 +27,54 @@ angular.module('directory.controllers', [])
 
 
 
-    .controller('ProductListCtrl', function ($scope, $location, $http, Products) {
+    .controller('ProductListCtrl',  function ($scope, $location, $http, $cookies,Products) {
         $http.get('/dyn').then(function (response) {
             console.log('response.data.bby-'+response.data.bby);
             var bby = response.data.bby == 'Y';
             if(bby){
-                $scope.searchKey = "";
+                $scope.searchKey = $cookies.mySearch;
 
                 $scope.clearSearch = function () {
                     $scope.searchKey = "";
-                    $scope.products = Products.query();
+                    //$scope.products = Products.query();
                 }
 
                 $scope.search = function () {
                     console.log('ProductListCtrl in');
+                    $cookies.mySearch = $scope.searchKey;
                     $scope.products = Products.query({query: $scope.searchKey});
+                    if(!$scope.searchKey || $scope.searchKey == null || $scope.searchKey.length == 0) {
+                        $scope.dealOfDay="Deal of the Day";
+                    }else {
+                        $scope.dealOfDay="";
+                    }
                     console.log('ProductListCtrl out');
                 }
 
-                $scope.products = Products.query();
+                if($scope.products == null || $scope.products.length == 0){
+                    if(!$scope.searchKey || $scope.searchKey == null || $scope.searchKey.length == 0) {
+                        $scope.products = Products.query();
+                        $scope.dealOfDay="Deal of the Day";
+                    }else {
+                        $scope.products = Products.query({query: $scope.searchKey});
+                        $scope.dealOfDay="";
+                    }
+                }
             }else{
                 console.log('Going to legacy');
                 $scope.$state.go("search"); //$location.path("/search");
             }
         });
     })
-    .controller('ProductDetailCtrl', function($scope, $stateParams, $http, Products) {
+    .controller('ProductDetailCtrl', function($scope, $stateParams, $http, $sce, Products) {
         $http.get('/dyn').then(function (response) {
             console.log('response.data.bby-'+response.data.bby);
             var bby = response.data.bby == 'Y';
             if(bby){
                 $scope.product = Products.get({productId: $stateParams.productId});
+                $scope.getHtml = function(html){
+                    return $sce.trustAsHtml(html);
+                };
             }else{
                 console.log('Going to legacy');
                 $scope.$state.go("search");

@@ -1,4 +1,4 @@
-angular.module('directory', ['ionic', 'directory.controllers', 'directory.services'])
+angular.module('directory', ['ionic', 'directory.controllers', 'directory.services','ngCookies'])
 
     .run(function ($rootScope, $state, $stateParams,$ionicPlatform) {
         $rootScope.$state = $state;
@@ -24,7 +24,6 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
                 templateUrl: 'templates/employee-list.html',
                 controller: 'EmployeeListCtrl'
             })
-
             .state('employee', {
                 url: '/employees/:employeeId',
                 templateUrl: 'templates/employee-detail.html',

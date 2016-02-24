@@ -15,7 +15,7 @@ exports.register = function(req, res) {
     }
 };
 exports.dyn = function(req, res) {
-    var any = req.query.bby; // ||  req.query.bby1 || req.query.bby2;
+    var any = req.query.bby ||  req.query.dealOfDay;
     if(any){
         var param = req.query.bby;
         if(param){
@@ -25,6 +25,13 @@ exports.dyn = function(req, res) {
             }else{
                 global_.dyn.bby = 'N';
                 return res.send("Successfully de-activated");
+            }
+        }
+        param = req.query.dealOfDay;
+        if(param){
+            if(param.length != 0){
+                global_.dyn.dealOfDay = param;
+                return res.send("dealOfDay param updated");
             }
         }
     }else{

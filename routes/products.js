@@ -47,8 +47,8 @@ var productinfo = function (obj) {
 
 exports.findAll = function (req, res, next) {
     console.log("Inside products - findAll()");
-    /*console.log("Bby flag is::"+global_.bby.bby);
-    if(global_.bby.bby != 'Y'){
+    /*console.log("Bby flag is::"+global_.dyn.bby);
+    if(global_.dyn.bby != 'Y'){
         console.log(req.url);
         console.log("Redirecting to legacy...");
         //res.writeHead(302, {'Location': 'https://progweb.heroku.com/index.html#/search'});
@@ -57,24 +57,28 @@ exports.findAll = function (req, res, next) {
     }else{*/
         var query = req.query.query;
 
-        if (!query)
-            query = "ipad";
+        if (query){
+            var url = "http://www.bestbuy.com/api/1.0/fragment/search/www?query=" + query;
+        }else{
+            url = "http://www.bestbuy.com/api/1.0/fragment/search/www?currentoffers_facet=On%20Sale&rows=5&query=" + global_.dyn.dealOfDay;
+        }
 
-        var url = "http://www.bestbuy.com/api/1.0/fragment/search/www?query=" + query;
         var args = {
             headers: {"Content-Type": "application/json", 'user-agent': 'Mozilla/5.0'}
         };
         console.log(url);
         var client = new Client();
         var req = client.get(url, args, function (data, response) {
-            console.log(data.documents.length);
-
-            var l = data.documents.length;
             products = [];
-            for (var i=0;i<l;i++ ){
-                var doc = data.documents[i];
-                products.push(new product(doc.skuid,doc.productname, doc.currentprice, doc.smallimageurl));
-            }
+            try {
+                console.log(data.documents.length);
+                var l = data.documents.length;
+                for (var i = 0; i < l; i++) {
+                    var doc = data.documents[i];
+                    products.push(new product(doc.skuid, doc.productname, doc.currentprice, doc.smallimageurl));
+                }
+            }catch(err){}
+            console.log(products.length);
             res.send(products);
         });
         req.end();
