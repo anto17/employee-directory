@@ -36,10 +36,7 @@ self.addEventListener('install', function(e) {
         '/js/controllers.js',
         '/js/services.js',
         '/lib/ionic/fonts/ionicons.ttf?v=1.5.2',
-          '/pics/',
-          '/pics',
-          '/pics/*',
-/*
+
         '/pics/Lisa_Wong.jpg',
         '/pics/Gary_Donovan.jpg',
         '/pics/Kathleen_Byrne.jpg',
@@ -56,7 +53,7 @@ self.addEventListener('install', function(e) {
         '/templates/employee-detail.html',
         '/templates/employee-list.html',
         '/templates/employee-reports.html',
-*/
+
         '/employees',
         '/employees/0',
         '/employees/1',
