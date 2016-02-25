@@ -63,7 +63,7 @@ div.noResultFound span{
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden !important;
-    background: url('../img/header_sprite.png') no-repeat -6px -9px;
+    background: url('../img/header_sprite.png') no-repeat -6px -12px;
     background-size: 125px,255px;
 
 }
