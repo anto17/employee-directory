@@ -30,6 +30,7 @@ self.addEventListener('install', function(e) {
         '/css/style.css',
         '/lib/ionic/js/ionic.bundle.js',
         '/lib/ionic/js/angular/angular-resource.min.js',
+        '/lib/ionic/js/angular/angular-cookies.min.js',
         '/cordova.js',
         '/js/app.js',
         '/js/controllers.js',
