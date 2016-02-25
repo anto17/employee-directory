@@ -62,7 +62,7 @@ div.noResultFound span{
     display: inline-block;
     text-indent: 100%;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: hidden !important;
     background: url('../img/header_sprite.png') no-repeat -6px -9px;
     background-size: 125px,255px;
 
@@ -88,3 +88,40 @@ div.noResultFound span{
     min-width: 50px;
 }
 
+div.BVRRSyndicatedReviewsListingHeader, div.BVRRSyndicatedReviewsListingProductName {
+    display:none;
+}
+
+.bby-prddtl p{
+    white-space: initial !important;
+}
+
+.bby-prddtl .card .item-avatar:first-child{
+    height: 150px;
+}
+
+.bby-prddtl .card .item-avatar:first-child > img:first-child{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.bby-prddtl .card .item-avatar:first-child h2, .bby-prddtl .card .item-avatar:first-child p{
+    margin-left: 20px;
+}
+
+.cust-review{
+    margin-left: 10px;
+}
+
+
+.bby-prdlist .item-avatar{
+    min-height: 80px;
+}
+
+.bby-prdlist a.item-content p{
+    margin: 5px 0 10px;
+}
+
+.bby-prdlist .item-avatar .item > img{
+    top: 15px;
+}

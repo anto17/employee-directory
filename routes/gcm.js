@@ -15,11 +15,11 @@ exports.register = function(req, res) {
     }
 };
 exports.dyn = function(req, res) {
-    var any = req.query.bby ||  req.query.dealOfDay;
-    if(any){
+    var any = req.query.bby ||  req.query.dealOfDay || req.query.showDefaultReview;
+        if(any){
         var param = req.query.bby;
         if(param){
-            if(param == 'Y'){
+            if(param == 'Y' || param == 'y'){
                 global_.dyn.bby = 'Y';
                 return res.send("Successfully activated");
             }else{
@@ -33,6 +33,15 @@ exports.dyn = function(req, res) {
                 global_.dyn.dealOfDay = param;
                 return res.send("dealOfDay param updated");
             }
+        }
+        param = req.query.showDefaultReview;
+        if(param){
+            if(param == 'Y' || param == 'y'){
+                global_.dyn.showDefaultReview = 'Y';
+            }else{
+                global_.dyn.showDefaultReview = 'N';
+            }
+            return res.send("showDefaultReview param updated by "+global_.dyn.showDefaultReview);
         }
     }else{
         return res.send(global_.dyn);

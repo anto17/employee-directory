@@ -75,6 +75,7 @@ angular.module('directory.controllers', [])
                 $scope.getHtml = function(html){
                     return $sce.trustAsHtml(html);
                 };
+                //try{$scope.product.reviewurl=$sce.trustAsResourceUrl($scope.product.reviewurl);}catch(err){}
             }else{
                 console.log('Going to legacy');
                 $scope.$state.go("search");

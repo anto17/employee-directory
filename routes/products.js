@@ -34,15 +34,17 @@ var productinfo = function (obj) {
     this.ship ="";
     this.bonus ="";
     this.customerrating ="";
+    this.reviewurl="/products/cust/review?query=";
 
     this.skuid = obj.skuId;
-    try{this.productname   = obj.names.short;                        }catch(err){}
-    try{this.description   = obj.descriptions.short;                 }catch(err){}
-    try{this.imageurl      = obj.media.listImage.url;                }catch(err){}
-    try{this.pickup        = obj.availability.pickup.displayMessage; }catch(err){}
-    try{this.ship          = obj.availability.ship.displayMessage;   }catch(err){}
-    try{this.bonus         = obj.bonusContent[0].displayName;        }catch(err){}
-    try{this.customerrating= obj.customerRatings.averageRating.score;}catch(err){}
+    try{this.productname   = obj.names.short;                                     }catch(err){}
+    try{this.description   = obj.descriptions.short;                              }catch(err){}
+    try{this.imageurl      = obj.media.listImage.url;                             }catch(err){}
+    try{this.pickup        = obj.availability.pickup.displayMessage;              }catch(err){}
+    try{this.ship          = obj.availability.ship.displayMessage;                }catch(err){}
+    try{this.bonus         = obj.bonusContent[0].displayName;                     }catch(err){}
+    try{this.customerrating= obj.customerRatings.averageRating.score;             }catch(err){}
+    try{this.reviewurl     = this.reviewurl + obj.customerRatings.mfgAverageRating.reviewsLink.url;}catch(err){}
 };
 
 exports.findAll = function (req, res, next) {
@@ -120,6 +122,31 @@ exports.findById = function (req, res, next) {
         console.log('request error', err);
     });
     console.log('findById out');
+};
+exports.getReview = function (req, res, next) {
+    console.log('getReview in');
+    var url = req.query.query;
+    if (!url) {
+        if(global_.dyn.showDefaultReview == 'Y'){
+            url = "http://reviews.bestbuy.com/3545a/1245002/syndicatedreviews.htm?apiversion=4.7";
+        }else{
+            res.send("");
+        }
+    }
+    var args = {
+        headers: {"Content-Type": "text/html;charset=UTF-8", 'user-agent': 'Mozilla/5.0'}
+    };
+    url=url+'&sourcename=Nespresso';
+    console.log(url);
+    var client = new Client();
+    var req = client.get(url, function (data, response) {
+        res.send(data);
+    });
+    req.end();
+    req.on('error', function (err) {
+        console.log('request error', err);
+    });
+    console.log('getReview out');
 };
 
 var getProducts = function(query) {

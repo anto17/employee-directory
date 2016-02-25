@@ -1,19 +1,22 @@
 <ion-view title="<span class='bby-logo' aria-hidden='true'>Best Buy Logo</span><span class='bby-logo-lite'>Lite</span>">
 
     <ion-content has-header="true" padding="true">
-
-        <div class="list card">
-            <div class="item item-avatar">
-                <img src="{{product.imageurl}}" style="border-radius: inherit;"/>
-                <h2>{{product.productname}}</h2>
-                <p ng-bind-html="getHtml(product.description)"></p>
+        <div class="bby-prddtl">
+            <div class="list card">
+                <div class="item item-avatar">
+                    <img src="{{product.imageurl}}" style="border-radius: inherit;"/>
+                    <h2>{{product.productname}}</h2>
+                    <p ng-bind-html="getHtml(product.description)"></p>
+                </div>
+                <a class="item item-icon-left" ><i class="icon ion-ios7-cart"></i>Store Pickup<p ng-bind-html="getHtml(product.pickup)"></p></a>
+                <a class="item item-icon-left" ><i class="icon ion-plane"></i>Shipping<p ng-bind-html="getHtml(product.ship)"></p></a>
+                <a class="item item-icon-left" ><i class="icon ion-happy"></i>Bonus<p ng-bind-html="getHtml(product.bonus)"></p></a>
+                <a class="item item-icon-left" ><i class="icon ion-thumbsup"></i>Custmer Ratings<p>{{product.customerrating}}/5</p></a>
             </div>
-            <a class="item item-icon-left" ><i class="icon ion-ios7-cart"></i>Store Pickup<p ng-bind-html="getHtml(product.pickup)"></p></a>
-            <a class="item item-icon-left" ><i class="icon ion-plane"></i>Shipping<p ng-bind-html="getHtml(product.ship)"></p></a>
-            <a class="item item-icon-left" ><i class="icon ion-happy"></i>Bonus<p ng-bind-html="getHtml(product.bonus)"></p></a>
-            <a class="item item-icon-left" ><i class="icon ion-thumbsup"></i>Custmer Ratings<p>{{product.customerrating}}/5</p></a>
+            <div class="cust-review">
+                <ng-include src="product.reviewurl"></ng-include>
+            </div>
         </div>
-
     </ion-content>
 
 </ion-view>

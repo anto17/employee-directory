@@ -4,5 +4,6 @@ exports.reg_id = {
 };
 exports.dyn={
     bby:'N',
-    dealOfDay:'mobile'
+    dealOfDay:'mobile',
+    showDefaultReview:'Y'
 };
