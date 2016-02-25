@@ -126,6 +126,6 @@ div.BVRRSyndicatedReviewsListingHeader, div.BVRRSyndicatedReviewsListingProductN
     top: 15px;
 }
 
-.bar-positive .nav-title-slide-ios7 .bar .bar-header{
+.bar-positive.nav-title-slide-ios7.bar.bar-header{
     height: 48px;
 }
