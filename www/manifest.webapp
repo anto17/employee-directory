@@ -1,10 +1,10 @@
 {
   "version": "1.0.0",
-  "name": "Employee Directory",
+  "name": "BestBuy Lite",
   "launch_path": "/",
-  "description": "Employee Directory",
+  "description": "BestBuy Lite",
   "icons": {
-    "128": "/img/ionic.png"
+    "128": "/img/price_reduced.png"
   },
   "developer": {
     "name": "Jelastin Johnsraj",
@@ -18,8 +18,8 @@
   },
   "locales": {
     "en": {
-      "name": "Employee Directory",
-      "description": "Employee Directory"
+      "name": "BestBuy Lite",
+      "description": "BestBuy Lite"
     }
   }
 }
