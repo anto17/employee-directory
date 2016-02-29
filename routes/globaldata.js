@@ -3,7 +3,12 @@ exports.reg_id = {
     reg_ids:[]
 };
 exports.dyn={
-    bby:'N',
+    bby:'Y',
     dealOfDay:'mobile',
     showDefaultReview:'Y'
+};
+exports.msg={
+    msg:'',
+    title:'',
+    sku:''
 };

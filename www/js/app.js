@@ -47,6 +47,6 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
                 controller: 'ProductDetailCtrl'
             });
 
-        $urlRouterProvider.otherwise('/search');
+        $urlRouterProvider.otherwise('/list');
 
     });

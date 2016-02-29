@@ -26,6 +26,7 @@ app.get('/employees/:id/reports', employees.findReports);
 //Rest API for GCM
 app.post('/register', gcm.register);
 app.get('/sendmsg', pushnotify.sendmsg);
+app.get('/getmsginfo', pushnotify.getmsginfo);
 
 
 //BBY
@@ -33,6 +34,8 @@ app.get('/dyn', gcm.dyn);
 app.get('/products', products.findAll);
 app.get('/products/:id', products.findById);
 app.get('/products/cust/review', products.getReview);
+
+
 
 app.set('port', process.env.PORT || 5000);
 
