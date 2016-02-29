@@ -72,22 +72,17 @@ self.addEventListener('install', function (e) {
                 'employees/4/reports',
                 'employees/5/reports',
 
+                '/img/header_sprite.png',
                 '/templates/product-list.html',
                 '/templates/product-detail.html',
-                '/dyn',
-                '/img/header_sprite.png',
-                '/products',
-                '/manifest.json',
 
+                '/products',
                 '/products/4684000',
                 '/products/4684101',
                 '/products/4684301',
                 '/products/2178004',
-                '/products/9055007',
+                '/products/9055007'
 
-                'http://img.bbystatic.com/BestBuy_US/images/products/4684/4684000_sc.jpg',
-                'http://bestbuy.ugc.bazaarvoice.com/static/3545a/r_5_ispacer.gif',
-                'http://bestbuy.ugc.bazaarvoice.com/static/3545a/bazaarvoice.css'
             ]).then(function () {
                 return self.skipWaiting();
             });
