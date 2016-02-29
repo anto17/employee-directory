@@ -1,21 +1,21 @@
 {
-  "name": "Employee Directory",
-  "short_name": "Employee Directory",
+  "name": "BestBuy Lite",
+  "short_name": "BestBuy Lite",
   "icons": [{
-        "src": "img/ionic.png",
+        "src": "img/price_reduced.png",
         "type": "image/png",
         "sizes": "128x128"
       }, {
-        "src": "img/ionic.png",
+        "src": "img/price_reduced.png",
         "type": "image/png",
         "sizes": "152x152"
       }, {
-        "src": "img/ionic.png",
+        "src": "img/price_reduced.png",
         "type": "image/png",
         "sizes": "144x144"
       },
       {
-        "src": "img/ionic.png",
+        "src": "img/price_reduced.png",
         "type": "image/png",
         "sizes": "256x256"
       }],
