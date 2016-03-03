@@ -25,7 +25,7 @@ var product = function (skuid, productname, currentprice, smallimageurl) {
     this.skuid = skuid;
     this.productname = productname;
     this.currentprice = currentprice;
-    this.smallimageurl = 'http://img.bbystatic.com/BestBuy_US'+smallimageurl;
+    this.smallimageurl = 'https://pisces.bbystatic.com/image2/BestBuy_US'+smallimageurl;
 };
 
 var productinfo = function (obj) {
