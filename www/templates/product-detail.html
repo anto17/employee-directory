@@ -8,6 +8,7 @@
                     <h2>{{product.productname}}</h2>
                     <p ng-bind-html="getHtml(product.description)"></p>
                 </div>
+                <a class="item item-icon-left" ><i class="icon ion-pricetags"></i>Price Detail<p ng-bind-html="getHtml(product.price)"></p></a>
                 <a class="item item-icon-left" ><i class="icon ion-ios7-cart"></i>Store Pickup<p ng-bind-html="getHtml(product.pickup)"></p></a>
                 <a class="item item-icon-left" ><i class="icon ion-plane"></i>Shipping<p ng-bind-html="getHtml(product.ship)"></p></a>
                 <a class="item item-icon-left" ><i class="icon ion-happy"></i>Bonus<p ng-bind-html="getHtml(product.bonus)"></p></a>

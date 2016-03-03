@@ -27,7 +27,7 @@ app.get('/employees/:id/reports', employees.findReports);
 app.post('/register', gcm.register);
 app.get('/sendmsg', pushnotify.sendmsg);
 app.get('/getmsginfo', pushnotify.getmsginfo);
-
+app.get('/static/img', pushnotify.getStaticImg);
 
 //BBY
 app.get('/dyn', gcm.dyn);

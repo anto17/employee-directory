@@ -41,3 +41,21 @@ exports.searchBySku = function (sku) {
     });
     return dfd.promise();
 }
+
+exports.fetchPrice = function (sku) {
+    var dfd = jq.Deferred();
+    var url = "http://www.bestbuy.com/api/1.0/carousel/prices?skus="+sku;
+    var args = {
+        headers: {"Content-Type": "application/json", 'user-agent': 'Mozilla/5.0'}
+    };
+    console.log(url);
+    var client = new Client();
+    var req = client.get(url, args, function (data, response) {
+        dfd.resolve(data);
+    });
+    req.end();
+    req.on('error', function (err) {
+        dfd.resolve(null);
+    });
+    return dfd.promise();
+}

@@ -74,15 +74,15 @@ self.addEventListener('install', function (e) {
 
                 '/img/header_sprite.png',
                 '/templates/product-list.html',
-                '/templates/product-detail.html',
+                '/templates/product-detail.html'
 
 
-                '/products',
+                /*'/products',
                 '/products/4684000',
                 '/products/4684101',
                 '/products/4684301',
                 '/products/2178004',
-                '/products/9055007'
+                '/products/9055007'*/
 
             ]).then(function () {
                 return self.skipWaiting();

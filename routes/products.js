@@ -25,10 +25,10 @@ var product = function (skuid, productname, currentprice, smallimageurl) {
     this.skuid = skuid;
     this.productname = productname;
     this.currentprice = currentprice;
-    this.smallimageurl = 'https://pisces.bbystatic.com/image2/BestBuy_US'+smallimageurl;
+    this.smallimageurl = 'http://img.bbystatic.com/BestBuy_US'+smallimageurl;
 };
 
-var productinfo = function (obj) {
+var productinfo = function (obj, priceObj) {
     this.skuid = "";
     this.productname = "";
     this.description = "";
@@ -38,6 +38,8 @@ var productinfo = function (obj) {
     this.bonus ="";
     this.customerrating ="";
     this.reviewurl="/products/cust/review?query=";
+    this.price = ""
+
 
     this.skuid = obj.skuId;
     try{this.productname   = obj.names.short;                                     }catch(err){}
@@ -46,8 +48,21 @@ var productinfo = function (obj) {
     try{this.pickup        = obj.availability.pickup.displayMessage;              }catch(err){}
     try{this.ship          = obj.availability.ship.displayMessage;                }catch(err){}
     try{this.bonus         = obj.bonusContent[0].displayName;                     }catch(err){}
+    try{this.price         = obj.bonusContent[0].displayName;                     }catch(err){}
     try{this.customerrating= obj.customerRatings.averageRating.score;             }catch(err){}
     try{this.reviewurl     = this.reviewurl + obj.customerRatings.mfgAverageRating.reviewsLink.url;}catch(err){}
+    try{
+        if(priceObj){
+            console.log('Special Price found for sku['+global_.msg.sku+'] price['+global_.msg.price+']');
+            if(global_.msg.sku == this.skuid && global_.msg.price){
+                this.price = "<b>Hot Sale : </b><span style='color: red;'>$"+(priceObj.currentPrice - Number(global_.msg.price))+"</span><br><b>On Sale : </b><span style='text-decoration:line-through;'>$" + priceObj.currentPrice + "</span><br><b>Regular : </b><span style='text-decoration:line-through;'>$" +priceObj.regularPrice+"</span>";
+            }else{
+                this.price = "<b>Sale Price: </b>$" + priceObj.currentPrice + "<br><b>Regular Price: </b><span style='text-decoration:line-through;'>$" +priceObj.regularPrice + "</span>";
+            }
+        }else{
+            this.price = "Sorry, our pricing system is down"
+        }
+    }catch(err){}
 };
 
 exports.findAll = function (req, res, next) {
@@ -78,7 +93,13 @@ exports.findById = function (req, res, next) {
     jq.when(dao.searchBySku(id)).
         done(function(data){
             if(data){
-                res.send(new productinfo(data[0]));
+                var sku_ = data[0].skuId;
+                jq.when(dao.fetchPrice(sku_)).
+                    done(function(priceData){
+                        if(data){
+                            res.send(new productinfo(data[0],priceData[0]));
+                        }
+                    });
             }else{
                 res.send("Some issue with data. Please try later. Sorry!!!");
             }

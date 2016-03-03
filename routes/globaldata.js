@@ -10,5 +10,6 @@ exports.dyn={
 exports.msg={
     msg:'',
     title:'',
-    sku:''
+    sku:'',
+    price:''
 };
