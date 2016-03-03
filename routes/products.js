@@ -55,7 +55,12 @@ var productinfo = function (obj, priceObj) {
         if(priceObj){
             console.log('Special Price found for sku['+global_.msg.sku+'] price['+global_.msg.price+']');
             if(global_.msg.sku == this.skuid && global_.msg.price){
-                this.price = "<b>Hot Sale : </b><span style='color: red;'>$"+(priceObj.currentPrice - Number(global_.msg.price))+"</span><br><b>On Sale : </b><span style='text-decoration:line-through;'>$" + priceObj.currentPrice + "</span><br><b>Regular : </b><span style='text-decoration:line-through;'>$" +priceObj.regularPrice+"</span>";
+                if(!priceObj.regularPrice){
+                    priceObj.regularPrice = priceObj.currentPrice;
+                 }
+                var num = (Number(priceObj.currentPrice) - Number(global_.msg.price));
+                num = num.round(2)
+                this.price = "<b>Hot Sale : </b><span style='color: red;'>$"+num+"</span><br><b>On Sale : </b><span style='text-decoration:line-through;'>$" + priceObj.currentPrice + "</span><br><b>Regular : </b><span style='text-decoration:line-through;'>$" +priceObj.regularPrice+"</span>";
             }else{
                 this.price = "<b>Sale Price: </b>$" + priceObj.currentPrice + "<br><b>Regular Price: </b><span style='text-decoration:line-through;'>$" +priceObj.regularPrice + "</span>";
             }
