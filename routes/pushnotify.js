@@ -31,7 +31,7 @@ var registerNotificationMessage = function (req) {
                     global_.msg.sku = info.skuId;
                     global_.msg.price = price;
                     updateMsgTitle(msg, price, info.names.short);
-                } catch (err) {
+                } catch (err) { updateMsgTitle(msg, price, "")
                 }
             });
     } else {
@@ -43,7 +43,7 @@ var registerNotificationMessage = function (req) {
                     global_.msg.sku = info.skuid;
                     global_.msg.price = price;
                     updateMsgTitle(msg, price, info.productname);
-                } catch (err) {
+                } catch (err) { updateMsgTitle(msg, price, "")
                 }
             });
     }
