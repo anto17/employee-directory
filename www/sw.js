@@ -27,6 +27,9 @@ self.addEventListener('install', function (e) {
             return cache.addAll([
                 '/',
                 '/index.html',
+                '/sw.js',
+                '/manifest.json',
+                '/dyn',
                 '/lib/ionic/css/ionic.css',
                 '/css/style.css',
                 '/lib/ionic/js/ionic.bundle.js',
@@ -75,7 +78,6 @@ self.addEventListener('install', function (e) {
                 '/img/header_sprite.png',
                 '/templates/product-list.html',
                 '/templates/product-detail.html'
-
 
                 /*'/products',
                 '/products/4684000',

@@ -2,7 +2,6 @@ var request = require('request');
 var global_ = require('./globaldata');
 var dao = require('./dao');
 var jq = require('jquery-deferred');
-var Client =  require('node-rest-client').Client;
 
 exports.sendmsg = function (req, res) {
     registerNotificationMessage(req);
@@ -27,7 +26,6 @@ var registerNotificationMessage = function (req) {
             done(function (data) {
                 try {
                     var info = data[0];
-                    console.log('@@@@', info);
                     global_.msg.sku = info.skuId;
                     global_.msg.price = price;
                     updateMsgTitle(msg, price, info.names.short);
@@ -39,7 +37,6 @@ var registerNotificationMessage = function (req) {
             done(function (data) {
                 try {
                     var info = data.documents[0];
-                    console.log('####', info);
                     global_.msg.sku = info.skuid;
                     global_.msg.price = price;
                     updateMsgTitle(msg, price, info.productname);
@@ -102,20 +99,14 @@ var sendGCM = function () {
 
 exports.getStaticImg = function (req, res, next) {
     var url = req.query.url;
-    if (url) {
-        url = 'http://img.bbystatic.com/BestBuy_US' + url;
+    if (url && url.length != 0) {
+        if(!url.startsWith('http')) {
+            url = 'http://img.bbystatic.com/BestBuy_US' + url;
+        }
+        console.log("STATIC URL::: "+url);
+        //res.setHeader("content-disposition", "attachment; filename=logo.png");
+        request(url).pipe(res);
     }else{
         res.send("");
     }
-    var args = {
-        headers: {"Content-Type": "image/gif", 'user-agent': 'Mozilla/5.0','Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'}
-    };
-    var client = new Client();
-    var req = client.get(url, function (data, response) {
-        res.send(response);
-    });
-    req.end();
-    req.on('error', function (err) {
-        console.log('request error', err);
-    });
 };

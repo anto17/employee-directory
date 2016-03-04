@@ -25,7 +25,7 @@ var product = function (skuid, productname, currentprice, smallimageurl) {
     this.skuid = skuid;
     this.productname = productname;
     this.currentprice = currentprice;
-    this.smallimageurl = 'http://img.bbystatic.com/BestBuy_US'+smallimageurl;
+    this.smallimageurl = smallimageurl;
 };
 
 var productinfo = function (obj, priceObj) {
@@ -54,13 +54,13 @@ var productinfo = function (obj, priceObj) {
     try{
         if(priceObj){
             console.log('Special Price found for sku['+global_.msg.sku+'] price['+global_.msg.price+']');
+            if(!priceObj.regularPrice){
+                priceObj.regularPrice = priceObj.currentPrice;
+            }
             if(global_.msg.sku == this.skuid && global_.msg.price){
-                if(!priceObj.regularPrice){
-                    priceObj.regularPrice = priceObj.currentPrice;
-                 }
-                //var num = (Number(priceObj.currentPrice) - Number(global_.msg.price));
-                //num = num.round(2);
-                this.price = "<b>Hot Sale : </b><span style='color: red;'>$"+(priceObj.currentPrice - Number(global_.msg.price))+"</span><br><b>On Sale : </b><span style='text-decoration:line-through;'>$" + priceObj.currentPrice + "</span><br><b>Regular : </b><span style='text-decoration:line-through;'>$" +priceObj.regularPrice+"</span>";
+                var num_ = Number(priceObj.currentPrice) - Number(global_.msg.price);
+                num_ = Math.round(num_ * 100) / 100 ;
+                this.price = "<b>Hot Sale : </b><span style='color: red;'>$"+num_+"</span><br><b>On Sale : </b><span style='text-decoration:line-through;'>$" + priceObj.currentPrice + "</span><br><b>Regular : </b><span style='text-decoration:line-through;'>$" +priceObj.regularPrice+"</span>";
             }else{
                 this.price = "<b>Sale Price: </b>$" + priceObj.currentPrice + "<br><b>Regular Price: </b><span style='text-decoration:line-through;'>$" +priceObj.regularPrice + "</span>";
             }
