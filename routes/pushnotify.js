@@ -100,11 +100,11 @@ var sendGCM = function () {
 exports.getStaticImg = function (req, res, next) {
     var url = req.query.url;
     if (url && url.length != 0) {
-        if(!url.startsWith('http')) {
+        if (!url.startsWith('http')) {
             url = 'http://img.bbystatic.com/BestBuy_US' + url;
         }
-        console.log("STATIC URL::: "+url);
-        //res.setHeader("content-disposition", "attachment; filename=logo.png");
+        console.log("STATIC URL::: " + url);
+        res.setHeader("content-disposition", "attachment; filename=logo.png");
         request(url).pipe(res);
     }else{
         res.send("");
