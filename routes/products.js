@@ -194,7 +194,7 @@ exports.getReview = function (req, res, next) {
     var url = req.query.query;
     if (!url) {
         if(global_.dyn.showDefaultReview == 'Y'){
-            url = "http://reviews.bestbuy.com/3545a/1245002/syndicatedreviews.htm?apiversion=4.7";
+            url = "https://reviews.bestbuy.com/3545a/1245002/syndicatedreviews.htm?apiversion=4.7";
         }else{
             res.send("");
         }
@@ -202,6 +202,9 @@ exports.getReview = function (req, res, next) {
     var args = {
         headers: {"Content-Type": "text/html;charset=UTF-8", 'user-agent': 'Mozilla/5.0'}
     };
+    if(url.startsWith("http:")){
+        url = url.replace('http','https')
+    }
     url=url+'&sourcename=Nespresso';
     console.log(url);
     var client = new Client();
