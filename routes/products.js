@@ -51,7 +51,8 @@ var productinfo = function (obj, priceObj) {
     try{this.bonus         = obj.bonusContent[0].displayName;                     }catch(err){}
     try{this.price         = obj.bonusContent[0].displayName;                     }catch(err){}
     try{this.customerrating= obj.customerRatings.averageRating.score;             }catch(err){}
-    try{this.reviewurl     = this.reviewurl + obj.customerRatings.mfgAverageRating.reviewsLink.url;}catch(err){}
+    //try{this.reviewurl     = this.reviewurl + obj.customerRatings.mfgAverageRating.reviewsLink.url;}catch(err){}
+    this.reviewurl = "/bby_review/review_4.html";
     try{
         if(priceObj){
             console.log('Special Price found for sku['+global_.msg.sku+'] price['+global_.msg.price+']');
@@ -194,7 +195,7 @@ exports.getReview = function (req, res, next) {
     var url = req.query.query;
     if (!url) {
         if(global_.dyn.showDefaultReview == 'Y'){
-            url = "https://reviews.bestbuy.com/3545a/1245002/syndicatedreviews.htm?apiversion=4.7";
+            url = "http://reviews.bestbuy.com/3545a/1245002/syndicatedreviews.htm?apiversion=4.7";
         }else{
             res.send("");
         }
@@ -202,9 +203,9 @@ exports.getReview = function (req, res, next) {
     var args = {
         headers: {"Content-Type": "text/html;charset=UTF-8", 'user-agent': 'Mozilla/5.0'}
     };
-    if(url.startsWith("http:")){
-        url = url.replace('http','https')
-    }
+    //if(url.startsWith("http:")){
+      //  url = url.replace('http','https')
+    //}
     url=url+'&sourcename=Nespresso';
     console.log(url);
     var client = new Client();

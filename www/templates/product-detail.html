@@ -12,12 +12,11 @@
                 <a class="item item-icon-left" ><i class="icon ion-ios7-cart"></i>Store Pickup<p ng-bind-html="getHtml(product.pickup)"></p></a>
                 <a class="item item-icon-left" ><i class="icon ion-plane"></i>Shipping<p ng-bind-html="getHtml(product.ship)"></p></a>
                 <a class="item item-icon-left" ><i class="icon ion-happy"></i>Bonus<p ng-bind-html="getHtml(product.bonus)"></p></a>
-                <a class="item item-icon-left" ><i class="icon ion-thumbsup"></i>Custmer Ratings<p>{{product.customerrating}}/5</p></a>
+                <a class="item item-icon-left" ><i class="icon ion-thumbsup"></i>Custmer Ratings<p class="bby-cut-rating">{{product.customerrating}}/5</p></a>
             </div>
             <div class="cust-review">
                 <ng-include src="product.reviewurl"></ng-include>
             </div>
         </div>
     </ion-content>
-
 </ion-view>
