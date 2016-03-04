@@ -17,7 +17,7 @@
             <ion-list>
                 <ion-item ng-repeat="product in products" type="item-text-wrap" class="item-avatar"
                           href="#/products/{{product.skuid}}">
-                    <img ng-src="/static/img?url={{product.smallimageurl}}" style="border-radius: inherit;"/>
+                    <img ng-src="{{product.smallimageurl}}" style="border-radius: inherit;"/>
                     {{product.productname}}
                     <p>Price: ${{product.currentprice}}</p>
                 </ion-item>

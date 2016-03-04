@@ -21,14 +21,15 @@ var products = [
     {"id": 11, "firstName": "Steven", "lastName": "Wells", "managerId": 3, "managerName": "John Williams", "reports": 0, "title": "Software Architect", "department": "Engineering", "cellPhone": "617-000-0012", "officePhone": "781-000-0012", "email": "swells@fakemail.com", "city": "Boston, MA", "pic": "Steven_Wells.jpg", "twitterId": "@fakeswells", "blog": "http://coenraets.org"}
 ];
 
-var product = function (skuid, productname, currentprice, smallimageurl) {
+var product = function (skuid, productname, currentprice, imageurl) {
     this.skuid = skuid;
     this.productname = productname;
     this.currentprice = currentprice;
-    this.smallimageurl = smallimageurl;
+    this.smallimageurl = "https://pisces-ssl.bbystatic.com/image2/BestBuy_US"+imageurl;
 };
 
 var productinfo = function (obj, priceObj) {
+    var secureImgUrl = 'https://pisces-ssl.bbystatic.com/image2/';
     this.skuid = "";
     this.productname = "";
     this.description = "";
@@ -44,7 +45,7 @@ var productinfo = function (obj, priceObj) {
     this.skuid = obj.skuId;
     try{this.productname   = obj.names.short;                                     }catch(err){}
     try{this.description   = obj.descriptions.short;                              }catch(err){}
-    try{this.imageurl      = obj.media.listImage.url;                             }catch(err){}
+    try{this.imageurl      = secureImgUrl + obj.media.listImage.path;             }catch(err){}
     try{this.pickup        = obj.availability.pickup.displayMessage;              }catch(err){}
     try{this.ship          = obj.availability.ship.displayMessage;                }catch(err){}
     try{this.bonus         = obj.bonusContent[0].displayName;                     }catch(err){}

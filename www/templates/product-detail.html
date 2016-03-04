@@ -4,7 +4,7 @@
         <div class="bby-prddtl">
             <div class="list card">
                 <div class="item item-avatar">
-                    <img ng-src="/static/img?url={{product.imageurl}}" style="border-radius: inherit;"/>
+                    <img ng-src="{{product.imageurl}}" style="border-radius: inherit;"/>
                     <h2>{{product.productname}}</h2>
                     <p ng-bind-html="getHtml(product.description)"></p>
                 </div>
