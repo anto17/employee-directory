@@ -132,3 +132,11 @@ div.BVRRSyndicatedReviewsListingHeader, div.BVRRSyndicatedReviewsListingProductN
 .BVRRSyndicatedContentAttribution.BVRRSyndicatedReviewAttribution{
     display:none;
 }
+
+.wrap-need{
+    white-space: initial !important;
+}
+
+.line-height-34{
+    line-height: 34px !important;
+}

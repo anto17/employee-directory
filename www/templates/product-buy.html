@@ -3,13 +3,13 @@
         <button class="button icon-left ion-chevron-left button-dark bby-back-button-width" onclick="window.history.back();return false;">Back</button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-        <a href="#/order-confirmation"><button class="button button-balanced">Place Order</button></a>
+        <a href="#/order-confirmation"><button class="button button-balanced line-height-34">Place Order</button></a>
     </ion-nav-buttons>
     <ion-content has-header="true" padding="true">
         <div class="list card">
             <div class="item item-thumbnail-left">
                 <img ng-src="https://pisces-ssl.bbystatic.com/image2/BestBuy_US/images/products/4640/4640100_s.gif"/>
-                <h2>{{product.productname}}</h2>
+                <h2 class="wrap-need">{{product.productname}}</h2>
                 <p style="margin-top:10px;">Price: ${{product.pricef}}</p>
             </div>
 
