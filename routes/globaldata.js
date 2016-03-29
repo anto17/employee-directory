@@ -4,7 +4,7 @@ exports.reg_id = {
 };
 exports.dyn={
     bby:'Y',
-    dealOfDay:'mobile',
+    dealOfDay:['mobile', 'tripod', 'television', 'movies', 'toys', 'fitbit', 'ipad', 'samsung gear'],
     showDefaultReview:'Y'
 };
 exports.msg={

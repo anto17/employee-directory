@@ -7,7 +7,9 @@ exports.searchByName = function (query) {
     if (query){
         var url = "http://www.bestbuy.com/api/1.0/fragment/search/www?query=" + query;
     }else{
-        url = "http://www.bestbuy.com/api/1.0/fragment/search/www?currentoffers_facet=On%20Sale&rows=5&query=" + global_.dyn.dealOfDay;
+        var dLen = global_.dyn.dealOfDay.length - 1;
+        var dLen = Math.floor(Math.random() * dLen) + 0;
+        url = "http://www.bestbuy.com/api/1.0/fragment/search/www?currentoffers_facet=On%20Sale&rows=5&query=" + global_.dyn.dealOfDay[dLen];
     }
     var args = {
         headers: {"Content-Type": "application/json", 'user-agent': 'Mozilla/5.0'}

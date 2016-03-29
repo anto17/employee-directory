@@ -30,7 +30,7 @@ exports.dyn = function(req, res) {
         param = req.query.dealOfDay;
         if(param){
             if(param.length != 0){
-                global_.dyn.dealOfDay = param;
+                global_.dyn.dealOfDay.push(param);
                 return res.send("dealOfDay param updated");
             }
         }
