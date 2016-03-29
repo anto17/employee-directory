@@ -140,3 +140,7 @@ div.BVRRSyndicatedReviewsListingHeader, div.BVRRSyndicatedReviewsListingProductN
 .line-height-34{
     line-height: 34px !important;
 }
+
+.rangle-flex-size{
+    flex:6 !important;
+}

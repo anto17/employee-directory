@@ -102,4 +102,7 @@ angular.module('directory.controllers', [])
             $scope.modal.hide();
         };
         $scope.product = Products.get({productId: $stateParams.productId});
+    })
+    .controller('OrderConfirmationCtrl',  function ($scope, $cookies) {
+        $cookies.mySearch = "";
     });
