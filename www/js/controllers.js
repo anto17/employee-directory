@@ -86,3 +86,20 @@ angular.module('directory.controllers', [])
         console.log('ProductReportsCtrl');
         $scope.product = Products.get({productId: $stateParams.productId, data: 'reports'});
     })
+    .controller('ProductBuyCtrl', function ($scope, $ionicModal,$stateParams, Products) {
+        $scope.contacts = [
+            { firstName: 'Jelastin', lastName: 'Johnsraj', email: 'anto@abc.com' }
+        ];
+
+        $ionicModal.fromTemplateUrl('templates/customer-modal.html', {
+            scope: $scope
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
+        $scope.createContact = function(u) {
+            //$scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
+            $scope.contacts = [{ firstName: u.firstName, lastName: u.lastName, email: u.email }];
+            $scope.modal.hide();
+        };
+        $scope.product = Products.get({productId: $stateParams.productId});
+    });

@@ -1,5 +1,10 @@
 <ion-view title="<span class='bby-logo' aria-hidden='true'>Best Buy Logo</span><span class='bby-logo-lite'>Lite</span>">
-
+    <ion-nav-buttons side="left">
+        <button class="button icon-left ion-chevron-left button-dark bby-back-button-width" onclick="window.history.back();return false;">Back</button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <a href="#/buy/{{product.skuid}}"><button class="button button-balanced">Buy Now</button></a>
+    </ion-nav-buttons>
     <ion-content has-header="true" padding="true">
         <div class="bby-prddtl">
             <div class="list card">

@@ -39,7 +39,8 @@ var productinfo = function (obj, priceObj) {
     this.bonus ="";
     this.customerrating ="";
     this.reviewurl="/products/cust/review?query=";
-    this.price = ""
+    this.price = "";
+    this.pricef = "19.99";
 
 
     this.skuid = obj.skuId;
@@ -66,6 +67,7 @@ var productinfo = function (obj, priceObj) {
             }else{
                 this.price = "<b>Sale Price: </b>$" + priceObj.currentPrice + "<br><b>Regular Price: </b><span style='text-decoration:line-through;'>$" +priceObj.regularPrice + "</span>";
             }
+            this.pricef = priceObj.currentPrice;
         }else{
             this.price = "Sorry, our pricing system is down"
         }
