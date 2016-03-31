@@ -5,7 +5,8 @@ exports.reg_id = {
 exports.dyn={
     bby:'Y',
     dealOfDay:['mobile', 'tripod', 'television', 'movies', 'toys', 'fitbit', 'ipad', 'samsung gear'],
-    showDefaultReview:'Y'
+    showDefaultReview:'Y',
+    notifyInterval:'20'
 };
 exports.msg={
     msg:'',
@@ -13,3 +14,4 @@ exports.msg={
     sku:'',
     price:''
 };
+exports.order=[];

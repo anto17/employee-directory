@@ -103,6 +103,43 @@ angular.module('directory.controllers', [])
         };
         $scope.product = Products.get({productId: $stateParams.productId});
     })
-    .controller('OrderConfirmationCtrl',  function ($scope, $cookies) {
+    .controller('OrderConfirmationCtrl',  function ($scope, $location, $cookies, $http, $timeout, $filter) {
         $cookies.mySearch = "";
+        var orderId = $filter('date')(new Date(), "yyyy-MM-dd-hh-MM-ss");
+        orderId = 'BBY-LITE-'+orderId.replace(/-/g,'');
+        var searchObject = $location.search();
+
+        var order = {
+            orderId:orderId,
+            regId:  $cookies.regid,
+            status: 1,
+            productname:searchObject.productname,
+            imagepath:searchObject.imagepath,
+            price:searchObject.price
+        };
+        $http.post('/register/order',{order:order});
+
+        $scope.callAtTimeout = function(id, time) {
+           $http.get('/pushmsg?orderId='+id).then(function (response) {
+               var hasNext = response.data;
+               if(hasNext == 'Y'){
+                   $timeout( function(){ $scope.callAtTimeout(id, time); }, time * 1000);
+               }
+           });
+        };
+
+        if(true) {
+            $http.get('/dyn?interval=GET').then(function (res) {
+                var time = res.data;
+                time = parseInt(time);
+                time = isNaN(time) ? 20 : time;
+                $timeout(function () {$scope.callAtTimeout(orderId, time);}, time * 1000);
+            });
+        }
+    })
+    .controller('OrderViewCtrl', function ($scope,$stateParams, $http) {
+        $http.get('/dyn?orderId='+$stateParams.orderId).then(function (res) {
+            console.log('OrderViewCtrl response::',res);
+            $scope.order = res.data;
+        });
     });

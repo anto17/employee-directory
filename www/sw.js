@@ -111,6 +111,30 @@ self.addEventListener('fetch', function (event) {
 
 self.addEventListener('push', function (event) {
     console.log('Push message', event);
+    var registerid = null;
+    try {
+        event.target.registration.pushManager.getSubscription().then(function (sub) {
+            registerid = sub.endpoint.split('gcm/send/')[1];
+            event.waitUntil(
+                fetch('/dyn?order='+registerid).then(function(response) {
+                    return response.json().then(function(data) {
+                        console.log('Response from /order/info/ service::',data);
+                        var title = data.title || 'Order Notification';
+                        var message = data.statusDescMsg || 'An update for your recent order.';
+                        var orderId = data.orderId || '';
+
+                        return self.registration.showNotification(title, {
+                            'body': message,
+                            'icon': '/img/best_buy_logo.png',
+                            'data': {'sku':data.sku || '', 'orderId': data.orderId }
+                        });
+                    });
+                })
+            );
+        });
+    }catch(err){console.log(err)}
+
+    /*
     event.waitUntil(
         fetch('/getmsginfo').then(function(response) {
             return response.json().then(function(data) {
@@ -125,11 +149,11 @@ self.addEventListener('push', function (event) {
                 });
             });
         })
-    );
+    );*/
 });
 
 self.addEventListener('notificationclick', function (event) {
-    var sku = event.notification.data;
+    var data = event.notification.data;
     console.log(event.notification);
     // Android doesn't close the notification when you click on it
     // See: http://crbug.com/463146
@@ -147,8 +171,10 @@ self.addEventListener('notificationclick', function (event) {
                     return client.focus();
             }
             if (clients.openWindow) {
-                if(sku){
+                if(data.sku){
                     return clients.openWindow('/index.html#/products/'+sku);
+                } else if(data.orderId){
+                    return clients.openWindow('/index.html#/order/view/'+data.orderId);
                 }else{
                     return clients.openWindow('/');
                 }

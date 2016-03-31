@@ -25,7 +25,9 @@ app.get('/employees/:id/reports', employees.findReports);
 
 //Rest API for GCM
 app.post('/register', gcm.register);
+app.post('/register/order', gcm.order);
 app.get('/sendmsg', pushnotify.sendmsg);
+app.get('/pushmsg', pushnotify.pushmsg);
 app.get('/getmsginfo', pushnotify.getmsginfo);
 app.get('/static/img', pushnotify.getStaticImg);
 

@@ -3,9 +3,46 @@ var global_ = require('./globaldata');
 var dao = require('./dao');
 var jq = require('jquery-deferred');
 
+exports.pushmsg = function (req, res) {
+    var orderId = req.query.orderId;
+    for (i = 0; i < global_.order.length; i++) {
+        if(global_.order[i].orderId == orderId){
+            var body = {
+                "data": {
+                    "msg": "aMsg"
+                },
+                "notification": {
+                    "body": "aBody",
+                    "title": "aTitle"
+                },
+                "registration_ids": [global_.order[i].regId]
+            };
+            global_.order[i].status = global_.order[i].status +1 ;
+            sendGCM(body);
+            global_.order[i].notify = 'SENT';
+            if(global_.order[i].status < 4 ){
+                return res.send('Y');
+            } else {
+                return res.send('N');
+            }
+        }
+    }
+    return res.send('N');
+};
 exports.sendmsg = function (req, res) {
     registerNotificationMessage(req);
-    sendGCM();
+    var body = {
+        "data": {
+            "score": "A message from anto"
+        },
+        "notification": {
+            "body": "great match!",
+            "title": "Portugal vs. Denmark",
+            "icon": "myicon"
+        },
+        "registration_ids": global_.reg_id.reg_ids
+    };
+    sendGCM(body);
     return res.send({"status": "message has been successfully posted"});
 };
 exports.getmsginfo = function (req, res) {
@@ -54,19 +91,8 @@ var updateMsgTitle = function (msg, price, pName) {
     console.log('global_.msg::', global_.msg);
 };
 
-var sendGCM = function () {
-    var ids = global_.reg_id.reg_ids;
-    var body = {
-        "data": {
-            "score": "A message from anto"
-        },
-        "notification": {
-            "body": "great match!",
-            "title": "Portugal vs. Denmark",
-            "icon": "myicon"
-        },
-        "registration_ids": global_.reg_id.reg_ids
-    };
+var sendGCM = function (body) {
+    //var ids = global_.reg_id.reg_ids;
 
     //for(i=0;i< ids.length;i++){
     request({

@@ -1,0 +1,27 @@
+<ion-view title="<span class='bby-logo' aria-hidden='true'>Best Buy Logo</span><span class='bby-logo-lite'>Lite</span>">
+    <ion-nav-buttons side="right">
+        <a href="#/list"><button class="button button-balanced line-height-34">Home</button></a>
+    </ion-nav-buttons>
+    <ion-content has-header="true" padding="true">
+        <div class="list card">
+            <div class="item item-thumbnail-left">
+                <img ng-src="https://pisces-ssl.bbystatic.com/image2/{{order.imagepath}}"/>
+                <h2 class="wrap-need">{{order.productname}}</h2>
+                <p style="margin-top:10px;">Price: ${{order.price}}</p>
+            </div>
+            <div class="item item-divider">
+                Order Status
+            </div>
+            <ion-list>
+                <label class="item item-input" style="border-color: white;">
+                    <span class="input-label">Status</span>
+                    {{order.statusDesc}}
+                </label>
+                <label class="item item-input wrap-need>" style="border-color: white;">
+                    <span class="input-label">Message</span>
+                    {{order.statusDescMsg}}
+                </label>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-view>

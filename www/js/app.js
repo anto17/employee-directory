@@ -55,6 +55,11 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
                 url: '/order-confirmation',
                 templateUrl: 'templates/order-confirmation.html',
                 controller: 'OrderConfirmationCtrl'
+            })
+            .state('order-view', {
+                url: '/order/view/:orderId',
+                templateUrl: 'templates/order-view.html',
+                controller: 'OrderViewCtrl'
             });
 
         $urlRouterProvider.otherwise('/list');
