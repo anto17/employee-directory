@@ -19,7 +19,7 @@ const Querystring  = require('querystring');
 var csrf_guid = Guid.raw();
 const api_version = "v2.6";
 const app_id = "1280314095315539";
-const app_secret = '8328897a3e69c2d5f914a8419c56d2a2';
+const app_secret = '55c52e8917acdf2e6bf2b6107c111b75';
 const me_endpoint_base_url = 'https://graph.accountkit.com/v2.6/me';
 const token_exchange_base_url = 'https://graph.accountkit.com/v2.6/access_token';
 
