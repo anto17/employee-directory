@@ -8,7 +8,10 @@
     "request":">2.5",
     "express": "~4.4.3",
     "node-rest-client":"~1.8.0",
-    "jquery-deferred":"0.3.0"
+    "jquery-deferred":"0.3.0",
+    "guid": "0.0.12",
+    "mustache": "^2.2.1",
+    "querystring": "^0.2.0"
   },
   "subdomain": "anto",
   "scripts": {

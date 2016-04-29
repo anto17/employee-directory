@@ -60,8 +60,12 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
                 url: '/order/view/:orderId',
                 templateUrl: 'templates/order-view.html',
                 controller: 'OrderViewCtrl'
+            }).state('login', {
+                url: '/login',
+                templateUrl: 'templates/login.html',
+                controller: 'LoginCtrl'
             });
 
-        $urlRouterProvider.otherwise('/list');
+        $urlRouterProvider.otherwise('/');
 
     });

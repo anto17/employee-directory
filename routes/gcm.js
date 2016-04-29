@@ -96,3 +96,15 @@ var isContains = function(ary, id){
         return false;
     }
 }
+exports.ispu = function(req, res) {
+    console.log('Request Came....');
+    return res.send(global_.ispu);
+};
+exports.ispuSet = function(req, res) {
+    if(!req.body) {
+        return res.send({"status": "error", "message": "missing ispu data"});
+    } else {
+        global_.ispu = req.body
+        return res.send("Updated...");
+    }
+};

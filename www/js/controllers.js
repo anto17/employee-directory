@@ -142,4 +142,18 @@ angular.module('directory.controllers', [])
             console.log('OrderViewCtrl response::',res);
             $scope.order = res.data;
         });
+    })
+    .controller('LoginCtrl', function ($scope, $ionicPopup, $state) {
+        $scope.data = {};
+
+        $scope.login = function() {
+            if($scope.data.username == 'a' &&  $scope.data.password == 'a'){
+                $state.go('list');
+            } else{
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Login failed!',
+                    template: 'Please check your credentials!'
+                });
+            }
+        }
     });
