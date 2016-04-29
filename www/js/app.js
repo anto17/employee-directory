@@ -62,7 +62,7 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
                 controller: 'OrderViewCtrl'
             }).state('login', {
                 url: '/login',
-                templateUrl: 'templates/login.html',
+                templateUrl: 'templates/login1.html',
                 controller: 'LoginCtrl'
             });
 
