@@ -115,7 +115,7 @@ app.post('/sendcode', function(request, response){
                     view.identity = respBody.email.address;
                 }
                 //var html = Mustache.to_html(loadLoginSuccess(), view);
-                response.redirect('https://progweb.herokuapp.com/index.html')
+                response.redirect('https://progweb.herokuapp.com/index.html#/list')
             });
         });
     }
