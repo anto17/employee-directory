@@ -31,18 +31,15 @@
 
                 <p><strong>Login via:</strong></p>
                 <ul class="demo-list-icon mdl-list">
+                    <li class="mdl-list__item">Enter country code (e.g. +1):<input type="text" id="country_code" /></li>
+                    <li class="mdl-list__item">Enter phone number without spaces (e.g. 444555666):<input type="text" id="phone_num"/></li>
                     <li class="mdl-list__item">
-                        Enter country code (e.g. +1):
-                        <input type="text" id="country_code" />
-                        Enter phone number without spaces (e.g. 444555666):
-                        <input type="text" id="phone_num"/>
                         <span class="mdl-list__item-primary-content">
                             <button onclick="loginWithSMS();" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-typography--text-center">SMS</button>
                         </span>
                     </li>
+                    <li class="mdl-list__item">Enter email address<input type="text" id="email"/></li>
                     <li class="mdl-list__item">
-                        Enter email address
-                        <input type="text" id="email"/>
                         <button onclick="loginWithEmail();" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-typography--text-center"> Email</button>
                     </li>
                 </ul>
