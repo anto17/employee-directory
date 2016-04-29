@@ -114,8 +114,8 @@ app.post('/sendcode', function(request, response){
                     view.method = "Email"
                     view.identity = respBody.email.address;
                 }
-                var html = Mustache.to_html(loadLoginSuccess(), view);
-                response.send(html);
+                //var html = Mustache.to_html(loadLoginSuccess(), view);
+                response.redirect('https://progweb.herokuapp.com/index.html')
             });
         });
     }
