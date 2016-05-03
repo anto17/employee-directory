@@ -66,6 +66,6 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
                 controller: 'LoginCtrl'
             });
 
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/list');
 
     });

@@ -5,9 +5,11 @@ var express = require('express'),
     gcm = require('./routes/gcm'),
     pushnotify= require('./routes/pushnotify'),
     bodyParser = require("body-parser"),
+    session = require('express-session'),
     app = express();
 
 
+app.use(session({secret: '1234567890QWERTY'}));
 
 // -----
 const fs = require('fs');
@@ -27,16 +29,34 @@ function loadLogin() {
     return fs.readFileSync('www/templates/login.html').toString();
 }
 
-app.get('/', function(request, response){
-    var view = {
-        appId: app_id,
-        csrf: csrf_guid,
-        version: api_version,
-    };
 
-    var html = Mustache.to_html(loadLogin(), view);
-    response.send(html);
+app.get('/isAuthenticated', function(req, res){
+    req.session.auth == 'anto' ? res.send('Y'): res.send('N');
 });
+app.get('/', function(request, response){
+    if(request.session.auth == 'anto'){
+        if(request.host == 'localhost')
+            response.redirect('http://localhost:5000/index.html#/list');
+        else
+            response.redirect('https://progweb.herokuapp.com/index.html#/list');
+    } else {
+        var view = {
+            appId: app_id,
+            csrf: csrf_guid,
+            version: api_version,
+        };
+
+        var html = Mustache.to_html(loadLogin(), view);
+        response.send(html);
+    }
+});
+
+app.get('/logout', function(req, res){
+    req.session.destroy(function(err) {
+    })
+    res.redirect("/");
+});
+
 
 function loadLoginSuccess() {
     return fs.readFileSync('www/index.html').toString();
@@ -114,8 +134,12 @@ app.post('/sendcode', function(request, response){
                     view.method = "Email"
                     view.identity = respBody.email.address;
                 }
+                request.session.auth = 'anto';
                 //var html = Mustache.to_html(loadLoginSuccess(), view);
-                response.redirect('https://progweb.herokuapp.com/index.html#/list')
+                if(request.host == 'localhost')
+                    response.redirect('http://localhost:5000/index.html#/list');
+                else
+                    response.redirect('https://progweb.herokuapp.com/index.html#/list');
             });
         });
     }

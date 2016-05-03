@@ -144,3 +144,9 @@ div.BVRRSyndicatedReviewsListingHeader, div.BVRRSyndicatedReviewsListingProductN
 .rangle-flex-size{
     flex:6 !important;
 }
+
+.logout-icon{
+    font-size: 35px;
+    color: white;
+    margin-right: 25px;
+}
