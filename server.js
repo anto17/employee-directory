@@ -35,14 +35,15 @@ app.get('/isAuthenticated', function(req, res){
     res.send('Y')
 });
 app.get('/', function(request, response){
-    response.redirect('http://localhost:5000/index.html#/list');
+    //response.redirect('http://localhost:5000/index.html#/list');
+    response.redirect('https://progweb.herokuapp.com/index.html#/list');
 
     /*if(request.session.auth == 'anto'){
         if(request.host == 'localhost')
             response.redirect('http://localhost:5000/index.html#/list');
         else
             response.redirect('https://progweb.herokuapp.com/index.html#/list');
-    } else {
+     } else {
         var view = {
             appId: app_id,
             csrf: csrf_guid,
