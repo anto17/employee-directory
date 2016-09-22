@@ -31,10 +31,13 @@ function loadLogin() {
 
 
 app.get('/isAuthenticated', function(req, res){
-    req.session.auth == 'anto' ? res.send('Y'): res.send('N');
+    //req.session.auth == 'anto' ? res.send('Y'): res.send('N');
+    res.send('Y')
 });
 app.get('/', function(request, response){
-    if(request.session.auth == 'anto'){
+    response.redirect('http://localhost:5000/index.html#/list');
+
+    /*if(request.session.auth == 'anto'){
         if(request.host == 'localhost')
             response.redirect('http://localhost:5000/index.html#/list');
         else
@@ -48,7 +51,7 @@ app.get('/', function(request, response){
 
         var html = Mustache.to_html(loadLogin(), view);
         response.send(html);
-    }
+    }*/
 });
 
 app.get('/logout', function(req, res){

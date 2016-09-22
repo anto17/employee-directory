@@ -72,6 +72,7 @@
     <div class="title">Best Buy Demo Site</div>
 </div>
 </body>
+<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
 <script>
     /*
     if('serviceWorker' in navigator) {
@@ -105,5 +106,18 @@
         var expires = "expires="+d.toUTCString();
         document.cookie = "regid" + "=" + cvalue + "; " + expires;
     }
+
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyD2cpiJ27_bwUPs87xvpbzMrMbDU8B8_-E",
+        authDomain: "bbygcm.firebaseapp.com",
+        databaseURL: "https://bbygcm.firebaseio.com",
+        storageBucket: "bbygcm.appspot.com",
+        messagingSenderId: "1041142189453"
+    };
+    firebase.initializeApp(config);
 </script>
+
+
+
 </html>
