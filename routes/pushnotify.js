@@ -100,7 +100,7 @@ var sendGCM = function (body) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'key=AIzaSyDSfvuoqB2zb9RfxbcXkcZB7u9aHLMqMUo'
+            'Authorization': 'key=AIzaSyDyKH8YEHYT0pmabayrnhIVkxg7cPgp0PM'
         },
         /*json: {
          "data": {

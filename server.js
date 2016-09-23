@@ -1,9 +1,8 @@
-
 var express = require('express'),
     employees = require('./routes/employees'),
     products = require('./routes/products'),
     gcm = require('./routes/gcm'),
-    pushnotify= require('./routes/pushnotify'),
+    pushnotify = require('./routes/pushnotify'),
     bodyParser = require("body-parser"),
     session = require('express-session'),
     app = express();
@@ -14,9 +13,9 @@ app.use(session({secret: '1234567890QWERTY'}));
 // -----
 const fs = require('fs');
 const Guid = require('guid');
-const Mustache  = require('mustache');
-const Request  = require('request');
-const Querystring  = require('querystring');
+const Mustache = require('mustache');
+const Request = require('request');
+const Querystring = require('querystring');
 
 var csrf_guid = Guid.raw();
 const api_version = "v1.0";
@@ -30,19 +29,19 @@ function loadLogin() {
 }
 
 
-app.get('/isAuthenticated', function(req, res){
-    //req.session.auth == 'anto' ? res.send('Y'): res.send('N');
-    res.send('Y')
+app.get('/isAuthenticated', function (req, res) {
+    // STEPUP-OFF
+    //req.session.auth == 'anto' ? res.send('Y') : res.send('N');
+    res.send('Y');
 });
-app.get('/', function(request, response){
-    //response.redirect('http://localhost:5000/index.html#/list');
-    response.redirect('https://progweb.herokuapp.com/index.html#/list');
-
-    /*if(request.session.auth == 'anto'){
+// STEPUP-OFF
+/*
+app.get('/', function (request, response) {
+     if(request.session.auth == 'anto'){
         if(request.host == 'localhost')
             response.redirect('http://localhost:5000/index.html#/list');
         else
-            response.redirect('https://progweb.herokuapp.com/index.html#/list');
+        response.redirect('https://progweb.herokuapp.com/index.html#/list');
      } else {
         var view = {
             appId: app_id,
@@ -52,11 +51,11 @@ app.get('/', function(request, response){
 
         var html = Mustache.to_html(loadLogin(), view);
         response.send(html);
-    }*/
+     }
 });
-
-app.get('/logout', function(req, res){
-    req.session.destroy(function(err) {
+*/
+app.get('/logout', function (req, res) {
+    req.session.destroy(function (err) {
     })
     res.redirect("/");
 });
@@ -68,12 +67,12 @@ function loadLoginSuccess() {
 
 //-----
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('www'));
 
 
-app.all('*', function(req, res, next) {
+app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
@@ -106,7 +105,7 @@ app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
 
-app.post('/sendcode', function(request, response){
+app.post('/sendcode', function (request, response) {
     // CSRF check
     if (request.body.csrf_nonce === csrf_guid) {
         var app_access_token = ['AA', app_id, app_secret].join('|');
@@ -119,7 +118,7 @@ app.post('/sendcode', function(request, response){
 
         // exchange tokens
         var token_exchange_url = token_exchange_base_url + '?' + Querystring.stringify(params);
-        Request.get({url: token_exchange_url, json: true}, function(err, resp, respBody) {
+        Request.get({url: token_exchange_url, json: true}, function (err, resp, respBody) {
             console.log(respBody);
             var view = {
                 user_access_token: respBody.access_token,
@@ -128,7 +127,7 @@ app.post('/sendcode', function(request, response){
             };
             // get account details at /me endpoint
             var me_endpoint_url = me_endpoint_base_url + '?access_token=' + respBody.access_token;
-            Request.get({url: me_endpoint_url, json:true }, function(err, resp, respBody) {
+            Request.get({url: me_endpoint_url, json: true}, function (err, resp, respBody) {
                 // send login_success.html
                 console.log(respBody);
                 if (respBody.phone) {
@@ -140,7 +139,7 @@ app.post('/sendcode', function(request, response){
                 }
                 request.session.auth = 'anto';
                 //var html = Mustache.to_html(loadLoginSuccess(), view);
-                if(request.host == 'localhost')
+                if (request.host == 'localhost')
                     response.redirect('http://localhost:5000/index.html#/list');
                 else
                     response.redirect('https://progweb.herokuapp.com/index.html#/list');

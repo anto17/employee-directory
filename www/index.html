@@ -81,6 +81,7 @@
                 .then(function() { console.log("Service Worker Registered"); });
     }*/
 
+    /*
     if ('serviceWorker' in navigator) {
         console.log('Service Worker is supported');
         navigator.serviceWorker.register('/sw.js')
@@ -97,6 +98,23 @@
         }).catch(function(error) {
             console.log('Service Worker error :^(', error);
         });
+    }*/
+
+    if ('serviceWorker' in navigator) {
+        console.log('Service Worker is supported');
+        navigator.serviceWorker.register('sw.js')
+                .then(function (reg) {
+                    console.log(':^)', reg);
+                    reg.pushManager.subscribe({
+                        userVisibleOnly: true
+                    }).then(function (sub) {
+                        console.log('endpoint:', sub.endpoint);
+                        setCookie(sub.endpoint.split('gcm/send/')[1]);
+                        $.post("/register",{registerid:sub.endpoint.split('gcm/send/')[1]});
+                    });
+                }).catch(function (error) {
+                    console.log(':^(', error);
+                });
     }
 
     function setCookie(cvalue) {
@@ -106,16 +124,15 @@
         var expires = "expires="+d.toUTCString();
         document.cookie = "regid" + "=" + cvalue + "; " + expires;
     }
-
-    // Initialize Firebase
+/*
     var config = {
-        apiKey: "AIzaSyD2cpiJ27_bwUPs87xvpbzMrMbDU8B8_-E",
-        authDomain: "bbygcm.firebaseapp.com",
-        databaseURL: "https://bbygcm.firebaseio.com",
-        storageBucket: "bbygcm.appspot.com",
-        messagingSenderId: "1041142189453"
+        apiKey: "AIzaSyB3ncjaKGG67OKgL5_hk3z7VbTf_Cg4ME8",
+        authDomain: "antopush-cb050.firebaseapp.com",
+        databaseURL: "https://antopush-cb050.firebaseio.com",
+        storageBucket: "antopush-cb050.appspot.com",
+        messagingSenderId: "423682426687"
     };
-    firebase.initializeApp(config);
+    firebase.initializeApp(config);*/
 </script>
 
 

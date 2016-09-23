@@ -24,7 +24,7 @@ exports.order = function(req, res) {
     }
 };
 exports.dyn = function(req, res) {
-    var any = req.query.bby ||  req.query.dealOfDay ||  req.query.interval || req.query.showDefaultReview || req.query.order || req.query.orderId;
+    var any = req.query.bby ||  req.query.dealOfDay ||  req.query.interval || req.query.showDefaultReview || req.query.order || req.query.orderId || req.query.regid;
     if(any){
         var param = req.query.bby;
         if(param){
@@ -60,6 +60,10 @@ exports.dyn = function(req, res) {
                 global_.dyn.showDefaultReview = 'N';
             }
             return res.send("showDefaultReview param updated by "+global_.dyn.showDefaultReview);
+        }
+        var param = req.query.regid;
+        if(param){
+           return res.send(global_.reg_id);
         }
         param = req.query.order || req.query.orderId;
         console.log(param);
