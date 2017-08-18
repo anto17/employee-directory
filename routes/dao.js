@@ -5,11 +5,11 @@ var Client =  require('node-rest-client').Client;
 exports.searchByName = function (query) {
     var dfd = jq.Deferred();
     if (query){
-        var url = "https://www.bestbuy.com/api/1.0/fragment/search/www?query=" + query;
+        var url = "https://www.bestbuy.com/api/1.0/fragment/search/www?brand_facet=GE&query=" + query;
     }else{
         var dLen = global_.dyn.dealOfDay.length - 1;
         var dLen = Math.floor(Math.random() * dLen) + 0;
-        url = "https://www.bestbuy.com/api/1.0/fragment/search/www?currentoffers_facet=On%20Sale&rows=5&query=" + global_.dyn.dealOfDay[dLen];
+        url = "https://www.bestbuy.com/api/1.0/fragment/search/www?brand_facet=GE&currentoffers_facet=On%20Sale&rows=5&query=" + global_.dyn.dealOfDay[dLen];
     }
     var args = {
         headers: {"Content-Type": "application/json", 'user-agent': 'Mozilla/5.0'}

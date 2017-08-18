@@ -131,9 +131,9 @@ exports.findAll1 = function (req, res, next) {
         var query = req.query.query;
 
         if (query){
-            var url = "https://www.bestbuy.com/api/1.0/fragment/search/www?query=" + query;
+            var url = "https://www.bestbuy.com/api/1.0/fragment/search/www?brand_facet=GE&query=" + query;
         }else{
-            url = "https://www.bestbuy.com/api/1.0/fragment/search/www?currentoffers_facet=On%20Sale&rows=5&query=" + global_.dyn.dealOfDay;
+            url = "https://www.bestbuy.com/api/1.0/fragment/search/www?brand_facet=GE&currentoffers_facet=On%20Sale&rows=5&query=" + global_.dyn.dealOfDay;
         }
 
         var args = {
@@ -227,7 +227,7 @@ var getProducts = function(query) {
     if (!query) {
         query = "ipad";
     }
-    var url = "https://www.bestbuy.com/api/1.0/fragment/search/www?query=" + query;
+    var url = "https://www.bestbuy.com/api/1.0/fragment/search/www?brand_facet=GE&query=" + query;
     var args = {
         headers: {"Content-Type": "application/json", 'user-agent': 'Mozilla/5.0'}
     };
