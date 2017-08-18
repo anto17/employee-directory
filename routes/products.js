@@ -131,9 +131,9 @@ exports.findAll1 = function (req, res, next) {
         var query = req.query.query;
 
         if (query){
-            var url = "http://www.bestbuy.com/api/1.0/fragment/search/www?query=" + query;
+            var url = "https://www.bestbuy.com/api/1.0/fragment/search/www?query=" + query;
         }else{
-            url = "http://www.bestbuy.com/api/1.0/fragment/search/www?currentoffers_facet=On%20Sale&rows=5&query=" + global_.dyn.dealOfDay;
+            url = "https://www.bestbuy.com/api/1.0/fragment/search/www?currentoffers_facet=On%20Sale&rows=5&query=" + global_.dyn.dealOfDay;
         }
 
         var args = {
@@ -174,7 +174,7 @@ exports.findById1 = function (req, res, next) {
     if (!id) {
         res.send("Some issue with data. Please try later.");
     }
-    var url = "http://www.bestbuy.com/api/1.0/product/summaries?skus="+id+"&includeInactive=false";
+    var url = "https://www.bestbuy.com/api/1.0/product/summaries?skus="+id+"&includeInactive=false";
     var args = {
         headers: {"Content-Type": "application/json", 'user-agent': 'Mozilla/5.0'}
     };
@@ -227,7 +227,7 @@ var getProducts = function(query) {
     if (!query) {
         query = "ipad";
     }
-    var url = "http://www.bestbuy.com/api/1.0/fragment/search/www?query=" + query;
+    var url = "https://www.bestbuy.com/api/1.0/fragment/search/www?query=" + query;
     var args = {
         headers: {"Content-Type": "application/json", 'user-agent': 'Mozilla/5.0'}
     };
